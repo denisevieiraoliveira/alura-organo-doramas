@@ -1,0 +1,33 @@
+:root{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.campo-texto {
+    margin: 24px 0;
+}
+
+.campo-texto label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #373531;
+}
+
+.campo-texto input {
+    border: none;
+    background-color: #fff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.campo-texto input::placeholder {
+    font-size: 16px;
+    color: #A4A4A4;
+}
+
+.campo-texto input:focus {
+    outline: 2px solid #ef95be; /* Remove o contorno padrão do foco */
+}
