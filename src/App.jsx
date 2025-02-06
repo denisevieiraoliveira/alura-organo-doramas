@@ -56,12 +56,12 @@ function App() {
   const [doramas, setDoramas] = useState([])
 
   const aoNovoDoramaAdicionado = (dorama) => {
-    //debugger
+    debugger
     setDoramas([...doramas, dorama])
   }
 
   return (
-    <div>
+    <>
       <Banner />
       <Formulario 
         generos={generos.map(genero => genero.nome)} 
@@ -75,7 +75,7 @@ function App() {
         corSecundaria={genero.corSecundaria} 
         doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
       />)}
-    </div>
+    </>
   )
 }
 

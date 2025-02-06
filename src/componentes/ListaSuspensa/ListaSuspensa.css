@@ -3,7 +3,7 @@
     margin-bottom: 8px;
     font-size: 18px;
     font-weight: 700;
-    color: #212121;
+    color: #373531;
 }
 
 .lista-suspensa select {
@@ -16,5 +16,5 @@
 }
 
 .lista-suspensa option:not(:checked) {
-    color: #A4A4A4;
+    color: #373531;
 }

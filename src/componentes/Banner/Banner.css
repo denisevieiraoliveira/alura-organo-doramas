@@ -5,6 +5,22 @@
 }
 
 .banner img {
-    max-width: 100%;
-    object-fit: contain;
+    /* width: auto; */
+    height: 200px;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .banner img {
+        width: auto;
+        height: 250px;
+        display: block;
+    } 
+}
+
+@media (min-width: 1200px) {
+    .banner img {
+        width: auto;
+        height: auto;
+    }
 }
