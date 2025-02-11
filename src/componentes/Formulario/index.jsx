@@ -37,6 +37,7 @@ const Formulario = (props) => {
                     label="Título" 
                     placeholder="Digite o título" 
                     valor={titulo}
+                    tipo="text"
                     aoAlterado={valor => setTitulo(valor)}
                 />
                 <CampoTexto 
@@ -44,19 +45,22 @@ const Formulario = (props) => {
                     label="Episódios" 
                     placeholder="Digite a quantidade de episódios" 
                     valor={episodios}
+                    tipo="number"
                     aoAlterado={valor => setEpisodios(valor)}
                 />
                  <CampoTexto 
                     label="Onde assistir" 
-                    placeholder="Digite o endereço de onde assistir"
+                    placeholder="Digite o link de onde assistir"
                     valor={link}
+                    tipo="url"
                     aoAlterado={valor => setLink(valor)}
                 />
                 <CampoTexto 
                     obrigatorio={true} 
                     label="Poster" 
-                    placeholder="Digite o endereço do poster" 
+                    placeholder="Digite o link do poster" 
                     valor={poster}
+                    tipo="url"
                     aoAlterado={valor => setPoster(valor)}
                 />
                 <ListaSuspensa 

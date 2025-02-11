@@ -11,8 +11,8 @@ const Dorama = ({titulo, episodios, link, poster, genero, cor}) => {
             </div>
             <div className='rodape'>
                 <h4>{titulo}</h4>
-                <a href={link} target='_blank' style={{color: cor}}>Assista agora</a>
                 <p>{genero}</p>
+                <a href={link} target='_blank' style={{color: cor}}>Assista agora</a>
             </div>
         </div>
     )

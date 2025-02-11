@@ -1,5 +1,6 @@
 .dorama {
     width: 262px;
+    margin: 20px;
 }
 
 .dorama .cabecalho {
@@ -63,8 +64,12 @@
     overflow: hidden;
 }
 
+.dorama .rodape a::hover {
+    color: #373531;
+}
+
 .dorama .rodape p {
-    font-size: 14px;
+    font-size: 16px;
     color: #373531;
     margin: 4px 0 0 0;
     padding: 0;
