@@ -1,0 +1,61 @@
+.dorama {
+    width: 262px;
+    margin: 20px;
+    position: relative;
+}
+
+.dorama .cabecalho {
+    height: 100px;
+    background-color: #F0F0F0;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.dorama img {
+    width: 100px;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    bottom: -30px;
+    align-self: center;
+}
+
+.dorama .rodape {
+    background: #FFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding: 40px 20px 10px 20px;
+}
+
+.dorama .rodape h4 {
+    color: #373531;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.dorama .rodape p.genero {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.dorama .rodape p.episodios {
+    font-size: 16px;
+    color: #373531;
+    margin: 10px 0 4px 0;
+    padding: 0;
+}
+
+.dorama .rodape a {
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.deletar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #fff;
+}

@@ -1,6 +1,7 @@
 .genero {
     text-align: center;
     padding: 32px;
+    position: relative;
 }
 
 .genero h3 {
@@ -16,4 +17,10 @@
    justify-content: center;
    margin-top: 32px;
    flex-wrap: wrap;
+}
+
+.input-cor {
+    position: absolute;
+    top: 30px;
+    right: 30px;
 }

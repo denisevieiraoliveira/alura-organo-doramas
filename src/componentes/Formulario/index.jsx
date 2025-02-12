@@ -1,10 +1,10 @@
-import './Formulario.css'
+import './formulario.css'
 import CampoTexto from '../../componentes/CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import Botao from '../Botao'
 import { useState } from 'react'
 
-const Formulario = (props) => {
+const Formulario = ({ generos, aoCadastrar }) => {
 
     const [titulo, setTitulo] = useState('')
     const [episodios, setEpisodios] = useState('')
@@ -12,9 +12,9 @@ const Formulario = (props) => {
     const [poster, setPoster] = useState('')
     const [genero, setGenero] = useState('')
 
-    const aoSalvar = (evento) => {
+    const aoSubmeter = (evento) => {
         evento.preventDefault()
-        props.aoDoramaCadastrado({
+        aoCadastrar({
             titulo,
             episodios,
             link,
@@ -29,8 +29,8 @@ const Formulario = (props) => {
     }
 
     return (
-        <section className='formulario'>
-            <form onSubmit={aoSalvar}>
+        <section className='formulario-container'>
+            <form className='formulario' onSubmit={aoSubmeter}>
                 <h2>Preencha os dados para criar o card do Dorama</h2>
                 <CampoTexto 
                     obrigatorio={true} 
@@ -66,13 +66,11 @@ const Formulario = (props) => {
                 <ListaSuspensa 
                     obrigatorio={true} 
                     label="Genêro" 
-                    itens={props.generos}
+                    itens={generos}
                     valor={genero}
                     aoAlterado={valor => setGenero(valor)}
                 />
-                <Botao>
-                    Criar card
-                </Botao>
+                <Botao texto="Criar card" />
             </form>
         </section>
     )

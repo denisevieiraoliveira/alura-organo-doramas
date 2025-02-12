@@ -1,22 +1,19 @@
+import hexToRgba from 'hex-to-rgba'
 import Dorama from '../Dorama'
-import './Genero.css'
+import './genero.css'
 
-const Genero = (props) => {
-    return(
-        (props.doramas.length > 0) ? <section className='genero' style={{backgroundColor: props.corSecundaria}}>
-            <h3 style={{borderColor: props.corPrimaria}}>{props.nome}</h3>
-            <div className='doramas'>
-                {props.doramas.map(dorama => <Dorama 
-                    key={dorama.titulo}
-                    titulo={dorama.titulo} 
-                    episodios={dorama.episodios} 
-                    link={dorama.link} 
-                    poster={dorama.poster} 
-                    genero={dorama.genero}
-                    cor={props.corPrimaria}
-                />)}
-            </div>
-        </section>
+const Genero = ({ genero, doramas, aoDeletar, mudarCor }) => {
+    return (
+        (doramas.length > 0) ? 
+            <section className='genero' style={{ backgroundColor: hexToRgba(genero.cor, 0.3)}}>
+                <input value={genero.cor} onChange={evento => mudarCor(evento.target.value, genero.nome)} type='color' className='input-cor' />
+                <h3 style={{ borderColor: genero.cor }}>{genero.nome}</h3>
+                <div className='doramas'>
+                    {doramas.map((dorama, indice) => {
+                        return <Dorama key={indice} dorama={dorama} cor={genero.cor} aoDeletar={aoDeletar} />
+                    })}
+                </div>
+            </section>
         : ''
     )
 }
