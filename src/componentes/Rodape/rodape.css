@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.footer ul {
+    text-align: right;
+}
+
 .footer ul li {
     display: inline-block;
     margin-right: 32px;

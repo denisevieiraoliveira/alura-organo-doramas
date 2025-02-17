@@ -2,19 +2,19 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.campo-texto {
-    margin: 24px 0;
+.campo {
+    margin: 18px 0;
 }
 
-.campo-texto label {
+.campo label {
     display: block;
     margin-bottom: 8px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     color: #373531;
 }
 
-.campo-texto input {
+.campo input {
     border: none;
     background-color: #fff;
     width: 100%;
@@ -22,11 +22,17 @@
     box-sizing: border-box;
 }
 
-.campo-texto input::placeholder {
+.campo input::placeholder {
     font-size: 16px;
     color: #A4A4A4;
 }
 
-.campo-texto input:focus {
+.campo input:focus {
     outline: 2px solid #ef95be; /* Remove o contorno padrão do foco */
+}
+
+.campo-color input {
+    background: transparent;
+    height: 40px;
+    padding: 0;
 }

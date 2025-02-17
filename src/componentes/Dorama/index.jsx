@@ -1,11 +1,31 @@
 import { IoCloseCircle } from "react-icons/io5";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import './dorama.css'
 
-const Dorama = ({ dorama, cor, aoDeletar }) => {
+const Dorama = ({ dorama, cor, aoDeletar, aoFavoritar }) => {
+    function favoritar() {
+        aoFavoritar(dorama.id)
+    }
+
+    const propsFavorito = {
+        size: 25,
+        onClick: favoritar
+    }
+
     return (
         <div className='dorama'>
-            <IoCloseCircle size={25} className='deletar' onClick={aoDeletar} />
+            <IoCloseCircle 
+                size={25} 
+                className='deletar' 
+                onClick={() => aoDeletar(dorama.id)}
+            />
             <div className='cabecalho' style={{ backgroundColor: cor }}>
+                <div className='favoritar'>
+                    {dorama.favorito 
+                        ? <IoIosHeart {...propsFavorito} color='#373531' /> 
+                        : <IoIosHeartEmpty {...propsFavorito} />                
+                    }
+                </div>
                 <img src={dorama.poster} alt={dorama.titulo} />
             </div>
             <div className='rodape'>

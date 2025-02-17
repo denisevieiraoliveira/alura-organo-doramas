@@ -10,6 +10,13 @@
     border-radius: 10px 10px 0px 0px;
 }
 
+.cabecalho .favoritar {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #fff;
+}
+
 .dorama img {
     width: 100px;
     min-height: 100%;
