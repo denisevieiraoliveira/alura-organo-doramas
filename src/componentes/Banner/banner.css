@@ -1,9 +1,13 @@
 .banner {
-    width: 100%;
-    height: 280px;
     background-color: #f8e3ec;
-    background-image: url('../../public/imagens/banner.jpg');
-    background-size: contain;
+    text-align: center;
+    width: 100%;
+}
+
+.banner img {
+    /* width: auto; */
+    height: 200px;
+    display: block;
 }
 
 @media (min-width: 768px) {
