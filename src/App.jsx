@@ -1,6 +1,7 @@
+import './app.css'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import './app.css'
+import { TbCopyMinusFilled, TbCopyPlusFilled } from "react-icons/tb";
 import Banner from './componentes/Banner'
 import Formulario from './componentes/Formulario'
 import Rodape from './componentes/Rodape'
@@ -140,13 +141,15 @@ function App() {
     }
   ])
 
+  const [isShow, setIsShow] = useState(false);
+
   function deletarDorama(id) {
     setDoramas(doramas.filter(dorama => dorama.id !== id))
   }
 
   function resolverFavorito(id) {
     setDoramas(doramas.map(dorama => {
-      if(dorama.id === id) {
+      if (dorama.id === id) {
         dorama.favorito = !dorama.favorito;
       }
       return dorama;
@@ -163,29 +166,41 @@ function App() {
   }
 
   function cadastrarGenero(novoGenero) {
-    setGeneros([...generos, {...novoGenero, id: uuidv4()}])
+    setGeneros([...generos, { ...novoGenero, id: uuidv4() }])
   }
 
   return (
     <>
       <Banner />
-      <Formulario
-        generos={generos.map(genero => genero.nome)}
-        aoCadastrar={dorama => setDoramas([...doramas, dorama])}
-        cadastrarGenero={cadastrarGenero}
-      />
+      {isShow && (
+        <Formulario
+          generos={generos.map(genero => genero.nome)}
+          aoCadastrar={dorama => setDoramas([...doramas, dorama])}
+          cadastrarGenero={cadastrarGenero}
+        />
+      )}
       <section className='generos'>
-        <h1>Meus Doramas</h1>
-        {generos.map((genero, indice) =>
-          <Genero
-            key={indice}
-            genero={genero}
-            doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
-            aoDeletar={deletarDorama}
-            mudarCor={mudarCorDoGenero}
-            aoFavoritar={resolverFavorito}
-          />
-        )}
+        <div className="cabecalho">
+          <button onClick={() => setIsShow(!isShow)}>
+            {isShow
+              ? <TbCopyMinusFilled size={25} color='#fff' />
+              : <TbCopyPlusFilled size={25} color='#fff' />
+            }
+          </button>
+          <h1>Meus Doramas</h1>
+        </div>
+        <div className='rodape'>
+          {generos.map((genero, indice) =>
+            <Genero
+              key={indice}
+              genero={genero}
+              doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
+              aoDeletar={deletarDorama}
+              mudarCor={mudarCorDoGenero}
+              aoFavoritar={resolverFavorito}
+            />
+          )}
+        </div>
       </section>
       <Rodape />
     </>

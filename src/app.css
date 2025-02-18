@@ -2,3 +2,21 @@
     text-align: center;
     color: #373531;
 }
+
+.cabecalho {
+    position: relative;
+}
+
+.cabecalho button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    right: 50px;
+    background-color: #ef95be;
+}
+
+.cabecalho button:hover svg {
+    fill: #373531;
+}
