@@ -1,13 +1,9 @@
 .banner {
-    background-color: #f8e3ec;
-    text-align: center;
     width: 100%;
-}
-
-.banner img {
-    /* width: auto; */
-    height: 200px;
-    display: block;
+    height: 280px;
+    background-color: #f8e3ec;
+    background-image: url('../../public/imagens/banner.jpg');
+    background-size: contain;
 }
 
 @media (min-width: 768px) {
