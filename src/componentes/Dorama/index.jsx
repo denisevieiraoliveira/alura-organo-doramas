@@ -14,12 +14,12 @@ const Dorama = ({ dorama, cor, aoDeletar, aoFavoritar }) => {
 
     return (
         <div className='dorama'>
-            <IoCloseCircle 
-                size={25} 
-                className='deletar' 
-                onClick={() => aoDeletar(dorama.id)}
-            />
             <div className='cabecalho' style={{ backgroundColor: cor }}>
+                <IoCloseCircle 
+                    size={25} 
+                    className='deletar' 
+                    onClick={() => aoDeletar(dorama.id)}
+                />
                 <div className='favoritar'>
                     {dorama.favorito 
                         ? <IoIosHeart {...propsFavorito} color='#373531' /> 

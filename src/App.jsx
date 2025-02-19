@@ -189,18 +189,16 @@ function App() {
           </button>
           <h1>Meus Doramas</h1>
         </div>
-        <div className='rodape'>
-          {generos.map((genero, indice) =>
-            <Genero
-              key={indice}
-              genero={genero}
-              doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
-              aoDeletar={deletarDorama}
-              mudarCor={mudarCorDoGenero}
-              aoFavoritar={resolverFavorito}
-            />
-          )}
-        </div>
+        {generos.map((genero, indice) =>
+          <Genero
+            key={indice}
+            genero={genero}
+            doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
+            aoDeletar={deletarDorama}
+            mudarCor={mudarCorDoGenero}
+            aoFavoritar={resolverFavorito}
+          />
+        )}
       </section>
       <Rodape />
     </>
