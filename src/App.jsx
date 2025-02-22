@@ -1,7 +1,11 @@
 import './app.css'
-import { useEffect, useState } from 'react'
+
+import db from './db.json';
+
+import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { TbCopyMinusFilled, TbCopyPlusFilled } from "react-icons/tb";
+
 import Banner from './componentes/Banner'
 import Formulario from './componentes/Formulario'
 import Rodape from './componentes/Rodape'
@@ -9,25 +13,9 @@ import Genero from './componentes/Genero'
 
 function App() {
 
-  const [generos, setGeneros] = useState([]);
+  const [generos, setGeneros] = useState(db.generos);
 
-  useEffect(() => {
-    fetch('http://localhost:8080/generos')
-      .then(resposta => resposta.json())
-      .then(dados => {
-        setGeneros(dados);
-      })
-  }, []);
-
-  const [doramas, setDoramas] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/doramas')
-      .then(resposta => resposta.json())
-      .then(dados => {
-        setDoramas(dados);
-      })
-  }, []);
+  const [doramas, setDoramas] = useState(db.doramas);
 
   const [isShow, setIsShow] = useState(false);
 
