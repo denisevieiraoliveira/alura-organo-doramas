@@ -11,6 +11,8 @@ const Formulario = ({ generos, aoCadastrar, cadastrarGenero }) => {
     const [link, setLink] = useState('')
     const [poster, setPoster] = useState('')
     const [genero, setGenero] = useState('')
+
+    const [idGenero, setIdGenero] = useState(generos.length+1)
     const [nomeGenero, setNomeGenero] = useState('')
     const [corGenero, setCorGenero] = useState('')
 
@@ -33,9 +35,11 @@ const Formulario = ({ generos, aoCadastrar, cadastrarGenero }) => {
     const aoSubmeterGenero = (evento) => {
         evento.preventDefault();
         cadastrarGenero({
+            id: idGenero,
             nome: nomeGenero,
             cor: corGenero
         })
+        setIdGenero('')
         setNomeGenero('')
         setCorGenero('')
     }

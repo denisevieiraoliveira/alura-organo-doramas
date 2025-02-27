@@ -1,48 +1,65 @@
-import './app.css'
+import "./app.css";
 
-import db from './db.json';
+import db from "./db.json";
 
-import { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import { useReducer, useState } from "react";
 import { TbCopyMinusFilled, TbCopyPlusFilled } from "react-icons/tb";
 
-import Banner from './componentes/Banner'
-import Formulario from './componentes/Formulario'
-import Rodape from './componentes/Rodape'
-import Genero from './componentes/Genero'
+import Banner from "./componentes/Banner";
+import Formulario from "./componentes/Formulario";
+import Rodape from "./componentes/Rodape";
+import Genero from "./componentes/Genero";
+
+import doramasReducer, { ADICIONAR_DORAMA, DELETAR_DORAMA, RESOLVER_FAVORITO } from "./doramasReducer";
+import generosReducer, { ADICIONAR_GENERO, MUDAR_COR_GENERO } from "./generosReducer";
 
 function App() {
+  const [generos, dispatchGeneros] = useReducer(generosReducer, db.generos);
 
-  const [generos, setGeneros] = useState(db.generos);
-
-  const [doramas, setDoramas] = useState(db.doramas);
+  const [doramas, dispatchDoramas] = useReducer(doramasReducer, db.doramas);
 
   const [isShow, setIsShow] = useState(false);
 
+  function cadastrarGenero(novoGenero) {
+    dispatchGeneros({
+      tipo: ADICIONAR_GENERO,
+      novoGenero
+    })
+  }
+
+  function cadastrarDorama(novoDorama) {
+    dispatchDoramas({
+      tipo: ADICIONAR_DORAMA,
+      novoDorama
+    })
+  }
+
   function deletarDorama(id) {
-    setDoramas(doramas.filter(dorama => dorama.id !== id))
+    dispatchDoramas({
+      tipo: DELETAR_DORAMA,
+      id
+    })
   }
 
   function resolverFavorito(id) {
-    setDoramas(doramas.map(dorama => {
-      if (dorama.id === id) {
-        dorama.favorito = !dorama.favorito;
-      }
-      return dorama;
-    }));
+    dispatchDoramas({
+      tipo: RESOLVER_FAVORITO,
+      id
+    })
   }
 
-  function mudarCorDoGenero(cor, id) {
-    setGeneros(generos.map(genero => {
-      if (genero.id === id) {
-        genero.cor = cor;
-      }
-      return genero;
-    }))
-  }
-
-  function cadastrarGenero(novoGenero) {
-    setGeneros([...generos, { ...novoGenero, id: uuidv4() }])
+  function mudarCorDoGenero(id, novaCor) {
+    dispatchGeneros({
+      tipo: MUDAR_COR_GENERO,
+      id,
+      novaCor
+    })
+    // setGeneros(generos.map(genero => {
+    //   if (genero.id === id) {
+    //     genero.cor = cor;
+    //   }
+    //   return genero;
+    // }))
   }
 
   return (
@@ -50,36 +67,36 @@ function App() {
       <Banner />
       {isShow && (
         <Formulario
-          generos={generos.map(genero => genero.nome)}
-          aoCadastrar={dorama => setDoramas([...doramas, dorama])}
+          generos={generos.map((genero) => genero.nome)}
+          aoCadastrar={cadastrarDorama}
           cadastrarGenero={cadastrarGenero}
         />
       )}
-      <section className='generos'>
+      <section className="generos">
         <div className="cabecalho">
           <button onClick={() => setIsShow(!isShow)}>
-            {isShow
-              ? <TbCopyMinusFilled size={25} color='#fff' />
-              : <TbCopyPlusFilled size={25} color='#fff' />
-            }
+            {isShow ? (
+              <TbCopyMinusFilled size={25} color="#fff" />
+            ) : (
+              <TbCopyPlusFilled size={25} color="#fff" />
+            )}
           </button>
           <h1>Meus Doramas</h1>
         </div>
-        {generos.map((genero, indice) =>
+        {generos.map((genero, indice) => (
           <Genero
             key={indice}
             genero={genero}
-            doramas={doramas.filter(dorama => dorama.genero === genero.nome)}
+            doramas={doramas.filter((dorama) => dorama.genero === genero.nome)}
             aoDeletar={deletarDorama}
             mudarCor={mudarCorDoGenero}
             aoFavoritar={resolverFavorito}
           />
-        )}
+        ))}
       </section>
       <Rodape />
     </>
-  )
-
+  );
 }
 
-export default App
+export default App;
