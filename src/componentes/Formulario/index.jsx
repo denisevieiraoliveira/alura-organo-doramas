@@ -14,7 +14,7 @@ const Formulario = ({ generos, aoCadastrar, cadastrarGenero }) => {
 
     const [idGenero, setIdGenero] = useState(generos.length+1)
     const [nomeGenero, setNomeGenero] = useState('')
-    const [corGenero, setCorGenero] = useState('')
+    const [corGenero, setCorGenero] = useState("#000")
 
     const aoSubmeter = (evento) => {
         evento.preventDefault()

@@ -25,10 +25,3 @@ const generosReducer = (estado, acao) => {
 }
 
 export default generosReducer;
-
-
-// return estado.map((dorama) =>
-//     dorama.id === acao.id
-//       ? { ...dorama, favorito: !dorama.favorito }
-//       : dorama
-//   );

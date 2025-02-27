@@ -1,6 +1,7 @@
 import "./app.css";
 
-import db from "./db.json";
+import generosInicial from "./generos.json"
+import doramasInicial from "./doramas.json"
 
 import { useReducer, useState } from "react";
 import { TbCopyMinusFilled, TbCopyPlusFilled } from "react-icons/tb";
@@ -14,9 +15,9 @@ import doramasReducer, { ADICIONAR_DORAMA, DELETAR_DORAMA, RESOLVER_FAVORITO } f
 import generosReducer, { ADICIONAR_GENERO, MUDAR_COR_GENERO } from "./generosReducer";
 
 function App() {
-  const [generos, dispatchGeneros] = useReducer(generosReducer, db.generos);
+  const [generos, dispatchGeneros] = useReducer(generosReducer, generosInicial);
 
-  const [doramas, dispatchDoramas] = useReducer(doramasReducer, db.doramas);
+  const [doramas, dispatchDoramas] = useReducer(doramasReducer, doramasInicial);
 
   const [isShow, setIsShow] = useState(false);
 
@@ -48,18 +49,12 @@ function App() {
     })
   }
 
-  function mudarCorDoGenero(id, novaCor) {
+  function mudarCorDoGenero(novaCor, id) {    
     dispatchGeneros({
       tipo: MUDAR_COR_GENERO,
       id,
       novaCor
     })
-    // setGeneros(generos.map(genero => {
-    //   if (genero.id === id) {
-    //     genero.cor = cor;
-    //   }
-    //   return genero;
-    // }))
   }
 
   return (
